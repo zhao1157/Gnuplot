@@ -1,6 +1,6 @@
 #! /usr/local/bin/gnuplot -p
 
-# This script is to plot the students scores in histogram.
+#This script is to plot the students scores in histogram.
 
 #set ytics 0, 1, 3
 set ylabel "Number of Students"
