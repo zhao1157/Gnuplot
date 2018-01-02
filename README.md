@@ -12,8 +12,8 @@
 
 *** 
 
-## ========== 2. ==========
-
+## ========== 2. Plot_Score/plot.histogram ==========
+This script is to plot the students scores in histogram.
 
 ***
 
