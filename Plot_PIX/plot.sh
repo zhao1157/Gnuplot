@@ -1,5 +1,7 @@
 #!/usr/local/bin/bash
 
+#This script is to plot all the 454 sets of photoionization cross section.
+
 line=0
 
 if [ -f total.ps ]
@@ -7,7 +9,7 @@ then
 	rm total.ps
 fi
 
-for i in $(seq 1 5)
+for i in $(seq 1 454)
 do
 	echo $i
 	
@@ -24,11 +26,12 @@ do
 	then 
 		rm Kramer_data
 	fi
-if [ $i == 5 ]	
-then
+#if [ $i == 5 ]	
+#then
 	data_line=($(sed -n 1p FAC_data))
 	printf "%17s %15s\n" ${data_line[0]} ${data_line[2]} >> Kramer_data
 	
+	#Apply Kramer's rule to generate the data at high-energy range
 	en_0=${data_line[0]/E+/*10^}
 	en_0=${en_0/E-/*10^-}
 	sigma_0=${data_line[2]/E+/*10^}
@@ -45,24 +48,24 @@ then
 		
 		printf "%17s %15.3E\n" ${data_line[0]} ${sigma} >> Kramer_data
 	done
-fi	
+#fi	
 
 	
-	#gnuplot <<eof
-		#set terminal postscript color enhanced
-		#set out 'tem.ps'
-		#set title '${J2}\_${Pi}\_${Level}'
-		#set logscale y
-		#set format y "%T"
-		#set ylabel 'log10(PI)'
-		#set xlabel 'Photon Energy (Ry)' 
+	gnuplot <<eof
+		set terminal postscript color enhanced
+		set out 'tem.ps'
+		set title '${J2}\_${Pi}\_${Level}'
+		set logscale y
+		set format y "%T"
+		set ylabel 'log10(PI)'
+		set xlabel 'Photon Energy (Ry)' 
 		
-		#plot 'RM_data' u 1:3 title '30 CC BPRM' with lines lc rgb 'black',\
-			 #'FAC_data' u 1:3 title 'DW' with lines lc rgb 'red',\
-			 #'Kramer_data' u 1:2 title 'Kramer' with lines lc rgb 'blue'
-#eof
-	#cat tem.ps >> total.ps
+		plot 'RM_data' u 1:3 title '30 CC BPRM' with lines lc rgb 'black',\
+			 'FAC_data' u 1:3 title 'DW' with lines lc rgb 'red',\
+			 'Kramer_data' u 1:2 title 'Kramer' with lines lc rgb 'blue'
+eof
+	cat tem.ps >> total.ps
 	line=$((line+24767))
 done
 
-#open total.ps
+open total.ps
