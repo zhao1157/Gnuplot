@@ -17,8 +17,7 @@ This script is to plot the students scores in histogram.
 
 ***
 
-## ========== 3. Plot_PIX/test_gnuplot.sh ==========
-
-
+## ========== 3. Plot_PIX/ ==========
+These scripts are used when plotting photoionization cross section data
 
 ***
