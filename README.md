@@ -17,7 +17,7 @@ This script is to plot the students scores in histogram.
 
 ***
 
-## ========== 3. ==========
+## ========== 3. Plot_PIX/test_gnuplot.sh ==========
 
 
 
