@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#This script is to plot the photoionization cross section for just one transition level.
+
 m=120
 k=15
 
